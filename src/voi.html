@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Questa pagina è dedicata a voi!
+    Ci sono situazioni in cui si vorrebbe dare una mano, forse senza sapere da dove partire. Qui sotto
+    trovate tre realtà molto diverse con cui è possibile collaborare, in qualità di volontari e non solo.">
+    <meta property="og:title" content="Voi" />
+    <meta property="og:description" content="Questa pagina è dedicata a voi!
+    Ci sono situazioni in cui si vorrebbe dare una mano, forse senza sapere da dove partire. Qui sotto
+    trovate tre realtà molto diverse con cui è possibile collaborare, in qualità di volontari e non solo." />
+    <meta property="og:image"
+        content="" />
+    <meta name=”robots” content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script>
+        addEventListener("load", (event) => {
+            //SET ELLIPSE CONTAINE HEIGHT
+            let ellipseContainer = document.getElementById("ellipseContainer");
+            console.log(ellipseContainer);
+            let ellipse1 = document.getElementById("ellipseContainer1");
+            console.log(ellipse1);
+            let paragraph = document.getElementById("text");
+            setHeightEllipseContainer(ellipseContainer, ellipse1, paragraph);
+        });
+
+        addEventListener("resize", (event) => {
+            //SET ELLIPSE CONTAINE HEIGHT
+            let ellipseContainer = document.getElementById("ellipseContainer");
+            console.log(ellipseContainer);
+            let ellipse1 = document.getElementById("ellipseContainer1");
+            console.log(ellipse1);
+            let paragraph = document.getElementById("text");
+            setHeightEllipseContainer(ellipseContainer, ellipse1, paragraph);
+
+
+        });
+
+        function setHeightEllipseContainer(ellipseContainer, ellipse1, paragraph) {
+            let windowSize = document.body.offsetWidth;
+            console.log(windowSize);
+            let heightEllipse1 = ellipse1.offsetHeight;
+            console.log(heightEllipse1);
+
+            let sumHeightEllipse = heightEllipse1;
+            console.log(sumHeightEllipse);
+            const n = 1;
+
+            if (window.innerWidth > 991) {
+
+
+
+                ellipseContainer.style.height = (sumHeightEllipse / n) + "px";
+                paragraph.style.top = (sumHeightEllipse) / 4 + "px";
+                paragraph.style.position = "absolute";
+
+            }
+
+            if (window.innerWidth < 991 & window.innerWidth > 568) {
+
+
+
+                ellipseContainer.style.height = (sumHeightEllipse / n) + "px";
+                paragraph.style.top = (sumHeightEllipse) / 6 + "px";
+                paragraph.style.position = "absolute";
+
+            }
+
+            if (window.innerWidth < 568) {
+
+
+                ellipseContainer.style.height = (sumHeightEllipse / n) + "px";
+                paragraph.style.position = "static";
+
+            }
+
+        }
+
+    </script>
+    <title>Voi</title>
+
+    <style>
+        .absolute-hero {
+            margin-top: calc(var(--small-padding-vertical) * -2);
+            position: relative;
+        }
+
+        section.paragraph-container {
+            position: absolute;
+            top: 25vw;
+            width: 58vw;
+            left: 0;
+        }
+
+        .ellipse-container {
+            right: 0;
+        }
+
+        .ellipse-container svg {
+            width: 60vw;
+            height: 100%;
+        }
+
+        p.cta-link:hover {
+            color: inherit;
+        }
+
+        .paragraph-container {
+            margin: var(--large-padding-vertical) var(--small-padding-horizontal);
+
+            padding: 0 var(--small-padding-horizontal);
+
+        }
+
+        .paragraph-container p {
+            margin-top: var(--medium-padding-vertical);
+        }
+
+        .last-doc {
+            margin-bottom: calc(var(--large-padding-vertical) + var(--large-padding-vertical));
+        }
+
+        .full-p,
+        .noi-text {
+            margin: var(--medium-padding-vertical) var(--small-padding-horizontal);
+        }
+
+        .col1 {
+            width: 62%;
+        }
+
+        .col2 {
+            width: 38%;
+        }
+
+        .location-block {
+            display: flex;
+            align-items: center;
+            padding: 0 var(--small-padding-horizontal);
+        }
+
+        .border {
+            width: 62%;
+            border-top: 0.3vh solid var(--white-color);
+            margin: 0.3vw;
+        }
+
+        @media screen and (max-width: 991px) {
+
+            header {
+                display: none;
+            }
+
+            .last-doc {
+                margin-bottom: var(--large-padding-vertical);
+
+
+            }
+
+            .footer-description {
+                margin-top: 0;
+            }
+
+
+            .ellipse-container svg {
+                width: 64vw;
+
+            }
+
+            .interview-block {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .col1 {
+                width: 100%;
+            }
+
+            .col2 {
+                width: 100%;
+                margin-top: var(--small-padding-vertical);
+            }
+
+            .col1 p {
+                margin-top: var(--small-padding-vertical);
+            }
+
+            .col2 p {
+                margin-top: var(--small-padding-vertical);
+            }
+
+            .location-block{
+                flex-direction: column !important;
+            }
+
+            .col2 img{
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 568px) {
+            .ellipse-container svg {
+                width: 84vw;
+            }
+
+            section.paragraph-container {
+                width: 100%;
+            }
+
+            .collaboration {
+                flex-direction: column;
+            }
+
+            .collaboration .col1 {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .border-wrapper {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .collaboration .col1 .border {
+                margin-top: 2vw;
+            }
+
+            .collaboration .col2 {
+                width: 100%;
+                margin-top: 1vh;
+            }
+
+            .gap {
+                row-gap: var(--medium-padding-vertical) !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Noi</h1>
+    <header>
+        <nav>
+            <ul>
+
+                <li>
+                    <a class="main-color" href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="documentario.html">Documentario</a>
+                </li>
+                <li>
+                    <a href="momenti-del-dentro.html">Momenti del dentro</a>
+                </li>
+                <li>
+                    <a href="momenti-del-fuori.html">Momenti del fuori</a>
+                </li>
+                <li>
+                    <a href="noi.html">Noi</a>
+                </li>
+                <li>
+                    <a href="voi.html">Voi</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-nav">
+        <header>
+            <a class="footer-heading" href="index.html">Il buono e <span class="text-indent">il cattivo tempo </span>
+            </a>
+            <div class="menu">
+                <svg viewBox="0 0 100 80" width="40" height="40">
+                    <rect width="100" height="1vw" rx="10"></rect>
+                    <rect y="30" width="100" height="1vw" rx="10"></rect>
+                    <rect y="60" width="100" height="1vw" rx="10"></rect>
+                </svg>
+            </div>
+
+            <div class="close-menu">
+                <svg viewBox="0 0 100 80" width="40" height="40">
+                    <rect width="100" height="1vw" rx="10"></rect>
+                    <rect y="30" width="100" height="1vw" rx="10"></rect>
+                    <rect y="60" width="100" height="1vw" rx="10"></rect>
+                </svg>
+            </div>
+
+            <nav id="mobileNav">
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="documentario.html">Documentario</a>
+                    </li>
+                    <li>
+                        <a href="momenti-del-dentro.html">Momenti del dentro</a>
+                    </li>
+                    <li>
+                        <a href="momenti-del-fuori.html">Momenti del fuori</a>
+                    </li>
+                    <li>
+                        <a href="noi.html">Noi</a>
+                    </li>
+                    <li>
+                        <a href="voi.html">Voi</a>
+                    </li>
+                </ul>
+                <div class="socialMobile">
+                    <li>
+                        <a href="https://www.instagram.com/ilbuonoeilcattivotempo/?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr">                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.544 5.536C24.1643 5.536 23.793 5.64861 23.4773 5.85958C23.1616 6.07055 22.9155 6.37041 22.7702 6.72125C22.6248 7.07208 22.5868 7.45813 22.6609 7.83057C22.735 8.20302 22.9178 8.54513 23.1864 8.81365C23.4549 9.08216 23.797 9.26502 24.1694 9.33911C24.5419 9.41319 24.9279 9.37517 25.2788 9.22985C25.6296 9.08453 25.9294 8.83844 26.1404 8.5227C26.3514 8.20695 26.464 7.83574 26.464 7.456C26.464 6.94678 26.2617 6.45843 25.9016 6.09836C25.5416 5.73829 25.0532 5.536 24.544 5.536ZM31.904 9.408C31.8729 8.08048 31.6243 6.76704 31.168 5.52C30.7612 4.45301 30.128 3.48685 29.312 2.688C28.5197 1.86788 27.5513 1.23868 26.48 0.848C25.2362 0.377857 23.9214 0.123536 22.592 0.0959999C20.896 -8.9407e-08 20.352 0 16 0C11.648 0 11.104 -8.9407e-08 9.408 0.0959999C8.07864 0.123536 6.76375 0.377857 5.52 0.848C4.45068 1.24264 3.48309 1.8713 2.688 2.688C1.86788 3.48028 1.23868 4.4487 0.848 5.52C0.377857 6.76375 0.123536 8.07864 0.0959999 9.408C-8.9407e-08 11.104 0 11.648 0 16C0 20.352 -8.9407e-08 20.896 0.0959999 22.592C0.123536 23.9214 0.377857 25.2362 0.848 26.48C1.23868 27.5513 1.86788 28.5197 2.688 29.312C3.48309 30.1287 4.45068 30.7574 5.52 31.152C6.76375 31.6221 8.07864 31.8765 9.408 31.904C11.104 32 11.648 32 16 32C20.352 32 20.896 32 22.592 31.904C23.9214 31.8765 25.2362 31.6221 26.48 31.152C27.5513 30.7613 28.5197 30.1321 29.312 29.312C30.1316 28.5161 30.7653 27.5491 31.168 26.48C31.6243 25.233 31.8729 23.9195 31.904 22.592C31.904 20.896 32 20.352 32 16C32 11.648 32 11.104 31.904 9.408ZM29.024 22.4C29.0124 23.4156 28.8284 24.4219 28.48 25.376C28.2245 26.0723 27.8142 26.7015 27.28 27.216C26.761 27.7448 26.1332 28.1543 25.44 28.416C24.4859 28.7644 23.4796 28.9484 22.464 28.96C20.864 29.04 20.272 29.056 16.064 29.056C11.856 29.056 11.264 29.056 9.664 28.96C8.60943 28.9797 7.55935 28.8174 6.56 28.48C5.89725 28.2049 5.29817 27.7965 4.8 27.28C4.26894 26.766 3.86375 26.1363 3.616 25.44C3.22537 24.4722 3.00871 23.4431 2.976 22.4C2.976 20.8 2.88 20.208 2.88 16C2.88 11.792 2.88 11.2 2.976 9.6C2.98317 8.56169 3.17272 7.53271 3.536 6.56C3.81768 5.88466 4.25002 5.28265 4.8 4.8C5.2861 4.24987 5.88686 3.81295 6.56 3.52C7.53528 3.16807 8.5632 2.98413 9.6 2.976C11.2 2.976 11.792 2.88 16 2.88C20.208 2.88 20.8 2.88 22.4 2.976C23.4156 2.98765 24.4219 3.17159 25.376 3.52C26.1031 3.78984 26.7557 4.22855 27.28 4.8C27.8043 5.29149 28.214 5.89237 28.48 6.56C28.8356 7.53429 29.0197 8.56285 29.024 9.6C29.104 11.2 29.12 11.792 29.12 16C29.12 20.208 29.104 20.8 29.024 22.4ZM16 7.792C14.3773 7.79516 12.7919 8.27924 11.4442 9.18307C10.0966 10.0869 9.04701 11.3699 8.42821 12.87C7.80942 14.3701 7.64916 16.0199 7.96767 17.6111C8.28618 19.2022 9.06918 20.6633 10.2177 21.8096C11.3663 22.9559 12.8288 23.736 14.4206 24.0514C16.0123 24.3668 17.6619 24.2034 19.1607 23.5817C20.6596 22.9599 21.9406 21.9079 22.8418 20.5585C23.743 19.209 24.224 17.6227 24.224 16C24.2261 14.9202 24.0147 13.8506 23.602 12.8527C23.1892 11.8549 22.5833 10.9485 21.819 10.1857C21.0547 9.42287 20.1471 8.81868 19.1485 8.40789C18.1498 7.99709 17.0798 7.78778 16 7.792ZM16 21.328C14.9462 21.328 13.9161 21.0155 13.0399 20.4301C12.1637 19.8446 11.4808 19.0125 11.0776 18.0389C10.6743 17.0654 10.5688 15.9941 10.7744 14.9606C10.98 13.927 11.4874 12.9777 12.2325 12.2325C12.9777 11.4874 13.927 10.98 14.9606 10.7744C15.9941 10.5688 17.0654 10.6743 18.0389 11.0776C19.0125 11.4808 19.8446 12.1637 20.4301 13.0399C21.0155 13.9161 21.328 14.9462 21.328 16C21.328 16.6997 21.1902 17.3925 20.9224 18.0389C20.6547 18.6854 20.2622 19.2727 19.7675 19.7675C19.2727 20.2622 18.6854 20.6547 18.0389 20.9224C17.3925 21.1902 16.6997 21.328 16 21.328Z" fill="#FFFBF1"/>
+                            </svg></a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M36.982 7.40256C37.2017 2.58334 35.4085 0.118048 31.6065 0.00668791C26.4792 -0.158433 23.0049 2.73395 21.186 8.68897C22.1255 8.28619 23.039 8.08224 23.9248 8.08224C25.8068 8.08224 26.6371 9.13995 26.4152 11.2511C26.3034 12.5303 25.4732 14.3914 23.9248 16.8371C22.3734 19.2844 21.2095 20.5073 20.436 20.5073C19.4388 20.5073 18.5254 18.6235 17.6942 14.8522C17.4156 13.7458 16.9177 10.9192 16.1988 6.37344C15.5336 2.16094 13.7612 0.193142 10.8825 0.469623C9.66395 0.58141 7.83484 1.68862 5.39901 3.79209C3.62708 5.3985 1.82612 7.00277 0 8.60662L1.73994 10.8483C3.39881 9.68865 4.36734 9.10625 4.64424 9.10625C5.91485 9.10625 7.10141 11.0984 8.20903 15.0783C9.20486 18.7281 10.1998 22.3782 11.1953 26.0283C12.686 30.0104 14.5109 32 16.6685 32C20.1492 32 24.4052 28.7304 29.4356 22.1939C34.3021 15.9347 36.8169 11.0036 36.982 7.40256Z" fill="#FFFBF1"/>
+                                </svg>
+                                
+                        </a>
+                    </li>
+                </div>
+            </nav>
+        </header>
+
+    </div>
+    <main>
+        <section class="ellipse-section" id="ellipseContainer">
+            <div class="absolute-hero">
+                <div class="ellipse-container" id="ellipseContainer1">
+                    <svg width="992" height="1052" viewBox="0 0 992 1052" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M355.543 767.796L354.34 769H343.508L342.304 767.796L314.623 694.381V685.956L315.827 684.752H323.048L324.251 685.956L348.322 752.15H349.526L373.597 685.956L374.8 684.752H382.021L383.225 685.956V694.381L355.543 767.796ZM390.46 726.876C390.46 720.537 391.343 714.72 393.108 709.425C394.873 704.129 397.441 699.556 400.811 695.704C404.181 691.853 408.313 688.884 413.207 686.798C418.182 684.632 423.838 683.549 430.177 683.549C436.516 683.549 442.132 684.632 447.027 686.798C452.001 688.884 456.173 691.853 459.543 695.704C462.913 699.556 465.481 704.129 467.246 709.425C469.011 714.72 469.894 720.537 469.894 726.876C469.894 733.215 469.011 739.032 467.246 744.327C465.481 749.623 462.913 754.196 459.543 758.048C456.173 761.899 452.001 764.908 447.027 767.074C442.132 769.16 436.516 770.204 430.177 770.204C423.838 770.204 418.182 769.16 413.207 767.074C408.313 764.908 404.181 761.899 400.811 758.048C397.441 754.196 394.873 749.623 393.108 744.327C391.343 739.032 390.46 733.215 390.46 726.876ZM402.496 726.876C402.496 731.69 403.097 736.103 404.301 740.115C405.504 744.047 407.27 747.457 409.596 750.345C411.923 753.234 414.812 755.48 418.262 757.085C421.712 758.609 425.684 759.372 430.177 759.372C434.67 759.372 438.642 758.609 442.092 757.085C445.542 755.48 448.431 753.234 450.758 750.345C453.084 747.457 454.85 744.047 456.053 740.115C457.257 736.103 457.858 731.69 457.858 726.876C457.858 722.062 457.257 717.689 456.053 713.758C454.85 709.746 453.084 706.296 450.758 703.407C448.431 700.519 445.542 698.312 442.092 696.788C438.642 695.183 434.67 694.381 430.177 694.381C425.684 694.381 421.712 695.183 418.262 696.788C414.812 698.312 411.923 700.519 409.596 703.407C407.27 706.296 405.504 709.746 404.301 713.758C403.097 717.689 402.496 722.062 402.496 726.876ZM495.196 769H485.568L484.364 767.796V685.956L485.568 684.752H495.196L496.4 685.956V767.796L495.196 769Z"
+                            fill="#FFFBF1" />
+                        <path
+                            d="M1429.64 388.812C1451.25 495.347 1395.72 607.321 1287.84 702.271C1180 797.19 1020.06 874.858 833.594 912.68C647.124 950.503 469.569 941.29 333.263 895.894C196.912 850.483 102.141 768.994 80.5325 662.46C58.9235 555.926 114.452 443.951 222.333 349.001C330.179 254.082 490.111 176.415 676.581 138.592C863.05 100.769 1040.61 109.982 1176.91 155.378C1313.26 200.789 1408.03 282.278 1429.64 388.812Z"
+                            stroke="#FFFBF1" stroke-width="3" />
+                    </svg>
+
+                </div>
+
+
+        </section>
+
+
+
+
+        <section class="paragraph-container" style="margin:0; " id="text">
+            <p>
+                Questa pagina è dedicata a voi!
+                Ci sono situazioni in cui si vorrebbe dare una mano, forse senza sapere da dove partire. Qui sotto
+                trovate tre realtà molto diverse con cui è possibile collaborare, in qualità di volontari e non solo.
+            </p>
+        </section>
+        </div>
+
+
+
+        <section class="interview">
+            <div class="hero-text" style="position: relative;">
+            </div>
+
+        </section>
+
+        <div>
+            <section class="location-block">
+                <div class="col1">
+                    <h2>
+                      <a style="font-size: inherit;" href="htp://www.polisocial.polimi.it/it/off-campus/" target="_blank" rel="noopener noreferrer" >   <span class="text-indent">OFF CAMPUS</span> SAN VITTORE</a>
+                    </h2>
+                </div>
+                <div class="col2">
+                    <img src="../assets/Images/san-vittore-scaled 1.jpg" alt="San Vittore">
+                </div>
+            </section>
+            <p
+                style="padding: 0 var(--small-padding-horizontal); margin-top: var(--medium-padding-vertical); margin-bottom: var(--large-padding-vertical);">
+                Off Campus: Il Cantiere per le Periferie è un’iniziativa promossa da Polisocial con l’obiettivo di
+                rafforzare la presenza del Politecnico nella città di Milano e l’idea di un’università più responsabile,
+                attenta alle sfide sociali, aperta e vicina ai territori e alle comunità. La sede di San Vittore è il
+                terzo spazio che apre nella città di Milano, pensato per avvicinare il carcere alla città e, viceversa,
+                la città al carcere.
+            </p>
+            <div class="border" style="margin-bottom: var(--medium-padding-vertical);"></div>
+        </div>
+
+        <div>
+            <section class="location-block" style="flex-direction: row-reverse;">
+                <div class="col1">
+                    <h2 style="width:fit-content; margin-left: auto;">
+                        <a style="font-size: inherit;" href="htps://www.puntozeroteatro.org/" target="_blank" rel="noopener noreferrer" >PUNTO ZERO<span class="text-indent">BECCARIA</span></a>
+                    </h2>
+                </div>
+                <div class="col2">
+                    <img src="../assets/Images/FOTO PUNTOZERO pagina voi.png" alt="Punto Zero Beccaria">
+                </div>
+            </section>
+            <p
+                style="padding: 0 var(--small-padding-horizontal); margin-top: var(--medium-padding-vertical); margin-bottom: var(--large-padding-vertical);">
+                Puntozero è un’associazione non-profit che da oltre 20 anni produce opere di teatro e cinema, operando
+                nel contesto carcerario attraverso laboratori e diverse iniziative.
+                Al suo interno Puntozero annovera professionisti accomunati dall’intento di contrastare il fenomeno del
+                disagio sociale e della devianza giovanile creando le migliori condizioni contestuali per facilitare
+                l’accettazione, la convivenza e il dialogo tra i giovani e le realtà adulte di riferimento.
+            </p>
+            <div class="border" style="margin-bottom: var(--medium-padding-vertical); margin-left: auto;"></div>
+        </div>
+
+
+        <div>
+            <section class="location-block">
+                <div class="col1">
+                    <h2>
+                        <a style="font-size: inherit;" href="htp://www.associazioneilgirasole.org/" target="_blank" rel="noopener noreferrer" ><span class="text-indent">ASSOCIAZIONE</span> IL GIRASOLE</a>
+
+                
+                    </h2>
+                </div>
+                <div class="col2">
+                    <img src="../assets/Images/FOTO ASSOCIAZIONE GIRASOLE pagina voi.png" alt="Associazione Il Girasole">
+                </div>
+            </section>
+            <p
+                style="padding: 0 var(--small-padding-horizontal); margin-top: var(--medium-padding-vertical); margin-bottom: calc(var(--large-padding-vertical) * 2);">
+                Il Girasole è un’associazione di volontariato.Dal 2006, anno della nascita, si impegna in ambito
+                penitenziario a Milano a favore di detenuti, ex detenuti e loro familiari con un’attenzione particolare
+                ai minori. L’associazione svolge servizi interni o esterni agli Istituti di pena di San Vittore, Bollate
+                e Opera.
+            </p>
+        </div>
+
+
+
+
+
+
+        <footer>
+            <a class="footer-heading" href="index.html">Il buono e <span class="text-indent">il cattivo tempo </span>
+            </a>
+
+            <div class="footer-link">
+                <nav>
+                    <ul style="align-items: center;">
+                        <li>
+                            <a class="cta-link" href="documentario.html">Documentario</a>
+                        </li>
+                        <li>
+                            <a class="cta-link" href="momenti-del-dentro.html">Momenti del dentro</a>
+                        </li>
+                        <li>
+                            <a class="cta-link" href="momenti-del-fuori.html">Momenti del fuori</a>
+                        </li>
+                        <li>
+                            <a class="cta-link" href="noi.html">Noi</a>
+                        </li>
+                        <li>
+                            <a class="cta-link" href="voi.html">Voi</a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com/ilbuonoeilcattivotempo/?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr">                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.544 5.536C24.1643 5.536 23.793 5.64861 23.4773 5.85958C23.1616 6.07055 22.9155 6.37041 22.7702 6.72125C22.6248 7.07208 22.5868 7.45813 22.6609 7.83057C22.735 8.20302 22.9178 8.54513 23.1864 8.81365C23.4549 9.08216 23.797 9.26502 24.1694 9.33911C24.5419 9.41319 24.9279 9.37517 25.2788 9.22985C25.6296 9.08453 25.9294 8.83844 26.1404 8.5227C26.3514 8.20695 26.464 7.83574 26.464 7.456C26.464 6.94678 26.2617 6.45843 25.9016 6.09836C25.5416 5.73829 25.0532 5.536 24.544 5.536ZM31.904 9.408C31.8729 8.08048 31.6243 6.76704 31.168 5.52C30.7612 4.45301 30.128 3.48685 29.312 2.688C28.5197 1.86788 27.5513 1.23868 26.48 0.848C25.2362 0.377857 23.9214 0.123536 22.592 0.0959999C20.896 -8.9407e-08 20.352 0 16 0C11.648 0 11.104 -8.9407e-08 9.408 0.0959999C8.07864 0.123536 6.76375 0.377857 5.52 0.848C4.45068 1.24264 3.48309 1.8713 2.688 2.688C1.86788 3.48028 1.23868 4.4487 0.848 5.52C0.377857 6.76375 0.123536 8.07864 0.0959999 9.408C-8.9407e-08 11.104 0 11.648 0 16C0 20.352 -8.9407e-08 20.896 0.0959999 22.592C0.123536 23.9214 0.377857 25.2362 0.848 26.48C1.23868 27.5513 1.86788 28.5197 2.688 29.312C3.48309 30.1287 4.45068 30.7574 5.52 31.152C6.76375 31.6221 8.07864 31.8765 9.408 31.904C11.104 32 11.648 32 16 32C20.352 32 20.896 32 22.592 31.904C23.9214 31.8765 25.2362 31.6221 26.48 31.152C27.5513 30.7613 28.5197 30.1321 29.312 29.312C30.1316 28.5161 30.7653 27.5491 31.168 26.48C31.6243 25.233 31.8729 23.9195 31.904 22.592C31.904 20.896 32 20.352 32 16C32 11.648 32 11.104 31.904 9.408ZM29.024 22.4C29.0124 23.4156 28.8284 24.4219 28.48 25.376C28.2245 26.0723 27.8142 26.7015 27.28 27.216C26.761 27.7448 26.1332 28.1543 25.44 28.416C24.4859 28.7644 23.4796 28.9484 22.464 28.96C20.864 29.04 20.272 29.056 16.064 29.056C11.856 29.056 11.264 29.056 9.664 28.96C8.60943 28.9797 7.55935 28.8174 6.56 28.48C5.89725 28.2049 5.29817 27.7965 4.8 27.28C4.26894 26.766 3.86375 26.1363 3.616 25.44C3.22537 24.4722 3.00871 23.4431 2.976 22.4C2.976 20.8 2.88 20.208 2.88 16C2.88 11.792 2.88 11.2 2.976 9.6C2.98317 8.56169 3.17272 7.53271 3.536 6.56C3.81768 5.88466 4.25002 5.28265 4.8 4.8C5.2861 4.24987 5.88686 3.81295 6.56 3.52C7.53528 3.16807 8.5632 2.98413 9.6 2.976C11.2 2.976 11.792 2.88 16 2.88C20.208 2.88 20.8 2.88 22.4 2.976C23.4156 2.98765 24.4219 3.17159 25.376 3.52C26.1031 3.78984 26.7557 4.22855 27.28 4.8C27.8043 5.29149 28.214 5.89237 28.48 6.56C28.8356 7.53429 29.0197 8.56285 29.024 9.6C29.104 11.2 29.12 11.792 29.12 16C29.12 20.208 29.104 20.8 29.024 22.4ZM16 7.792C14.3773 7.79516 12.7919 8.27924 11.4442 9.18307C10.0966 10.0869 9.04701 11.3699 8.42821 12.87C7.80942 14.3701 7.64916 16.0199 7.96767 17.6111C8.28618 19.2022 9.06918 20.6633 10.2177 21.8096C11.3663 22.9559 12.8288 23.736 14.4206 24.0514C16.0123 24.3668 17.6619 24.2034 19.1607 23.5817C20.6596 22.9599 21.9406 21.9079 22.8418 20.5585C23.743 19.209 24.224 17.6227 24.224 16C24.2261 14.9202 24.0147 13.8506 23.602 12.8527C23.1892 11.8549 22.5833 10.9485 21.819 10.1857C21.0547 9.42287 20.1471 8.81868 19.1485 8.40789C18.1498 7.99709 17.0798 7.78778 16 7.792ZM16 21.328C14.9462 21.328 13.9161 21.0155 13.0399 20.4301C12.1637 19.8446 11.4808 19.0125 11.0776 18.0389C10.6743 17.0654 10.5688 15.9941 10.7744 14.9606C10.98 13.927 11.4874 12.9777 12.2325 12.2325C12.9777 11.4874 13.927 10.98 14.9606 10.7744C15.9941 10.5688 17.0654 10.6743 18.0389 11.0776C19.0125 11.4808 19.8446 12.1637 20.4301 13.0399C21.0155 13.9161 21.328 14.9462 21.328 16C21.328 16.6997 21.1902 17.3925 20.9224 18.0389C20.6547 18.6854 20.2622 19.2727 19.7675 19.7675C19.2727 20.2622 18.6854 20.6547 18.0389 20.9224C17.3925 21.1902 16.6997 21.328 16 21.328Z" fill="#FFFBF1"/>
+                                </svg></a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M36.982 7.40256C37.2017 2.58334 35.4085 0.118048 31.6065 0.00668791C26.4792 -0.158433 23.0049 2.73395 21.186 8.68897C22.1255 8.28619 23.039 8.08224 23.9248 8.08224C25.8068 8.08224 26.6371 9.13995 26.4152 11.2511C26.3034 12.5303 25.4732 14.3914 23.9248 16.8371C22.3734 19.2844 21.2095 20.5073 20.436 20.5073C19.4388 20.5073 18.5254 18.6235 17.6942 14.8522C17.4156 13.7458 16.9177 10.9192 16.1988 6.37344C15.5336 2.16094 13.7612 0.193142 10.8825 0.469623C9.66395 0.58141 7.83484 1.68862 5.39901 3.79209C3.62708 5.3985 1.82612 7.00277 0 8.60662L1.73994 10.8483C3.39881 9.68865 4.36734 9.10625 4.64424 9.10625C5.91485 9.10625 7.10141 11.0984 8.20903 15.0783C9.20486 18.7281 10.1998 22.3782 11.1953 26.0283C12.686 30.0104 14.5109 32 16.6685 32C20.1492 32 24.4052 28.7304 29.4356 22.1939C34.3021 15.9347 36.8169 11.0036 36.982 7.40256Z" fill="#FFFBF1"/>
+                                    </svg>
+                                    
+                            </a>
+                        </li>
+                    </ul>
+
+                        
+                </nav>
+            </div>
+
+            <p class="footer-description">Progetto realizzato per il Laboratorio di Sintesi Finale del Corso di Laurea
+                Magistrale Design della Comunicazione, Politecnico di Milano 2023/2024</p>
+
+            <div class="footer-credits"> <a href="mailto:ilbuonoeilcattivotempo@gmail.com" class="footer-description">ilbuonoeilcattivotempo@gmail.com</a>
+                <a  href="https://mattiatisi.it/" target="_blank" rel="noopener noreferrer" class="footer-description">Pagina web sviluppata con il supporto di Mattia Tisi</a>
+            </div>
+
+        </footer>
+
+
+
+
+
+    </main>
+
+</body>
+
+</html>

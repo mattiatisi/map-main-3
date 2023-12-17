@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IL MONDO DEL FUORI</title>
+
+  <style>
+    /*   GLOBAL   */
+    @font-face {
+      font-family: 'CircularStd-Book';
+      font-style: normal;
+      font-weight: normal;
+      font-display: auto;
+      /* or block, swap, fallback, optional */
+      src: local('CircularStd-Book'),
+        url('/fonts/CircularStd-Book.woff') format('woff');
+      /* will be preloaded */
+      unicode-range: U+000-5FF;
+      /* Latin glyphs */
+    }
+
+    @font-face {
+      font-family: 'Replica Trial TT';
+      font-style: normal;
+      font-weight: normal;
+      font-display: auto;
+      /* or block, swap, fallback, optional */
+      src: local('Replica Trial TT'),
+        url('/fonts/ReplicaTrialTT-Regular.woff') format('woff');
+      /* will be preloaded */
+      unicode-range: U+000-5FF;
+      /* Latin glyphs */
+    }
+
+    :root {
+      /*   COLORS   */
+      --main-color: #ff5361;
+      --black-color: #101010;
+      --white-color: #fffbf1;
+
+      /*   FONT SIZE   */
+      --heading: 6.2vw;
+      --subheading: 4vw;
+      --paragraph: 3.5vw;
+      --banner-p: 2.4vw;
+      --link: 2vw;
+      --small-p: 1.6vw;
+
+      /*   SPACING   */
+      --small-padding-horizontal: 3.6vw;
+      --small-padding-vertical: 3.4vh;
+      --medium-padding-vertical: 6.8vh;
+      --large-padding-vertical: 10vh;
+    }
+
+
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      height: 100%;
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      font-family: Replica Trial TT;
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--black-color);
+      color: var(--white-color);
+    }
+
+
+    header {
+      position: absolute;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: auto;
+      bottom: var(--medium-padding-vertical);
+      margin: 0 var(--small-padding-horizontal);
+      z-index: 1;
+    }
+
+    input,
+    button,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      overflow-wrap: break-word;
+    }
+
+    h1 {
+      height: 0;
+      width: 0;
+      opacity: 0;
+    }
+
+    .mobile {
+      display: none;
+    }
+
+    /*   HEADER   */
+    header {
+      width: 100%;
+      padding: var(--small-padding-vertical) var(--small-padding-horizontal);
+      top: 0;
+      z-index: 9;
+      position: absolute;
+    }
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a,
+    .cta-link {
+      text-decoration: none;
+      color: var(--white-color);
+      font-size: var(--link);
+    }
+
+
+    a:hover,
+    .cta-link:hover {
+      color: var(--main-color);
+    }
+
+    #text {
+      position: absolute;
+      bottom: 4vh;
+      width: 35vw;
+      left: 0;
+      margin: 0 var(--small-padding-horizontal);
+      display: flex;
+      flex-direction: column;
+    }
+
+    #text .cta-link {
+      text-decoration: underline;
+      text-underline-offset: 0.8vh;
+      text-decoration-color: var(--main-color);
+      z-index: 9999;
+      position: relative;
+      cursor: pointer;
+      margin-bottom: calc(var(--small-padding-vertical) * 2);
+    }
+
+
+
+
+    /*   HERO SECTION   */
+    .hero {
+      /*position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    */
+      height: 100vh;
+    }
+
+    .full-page {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #mobileNav,
+    .mobile-nav {
+      display: none;
+    }
+
+    .ellipse-section {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+
+    .no-decoration {
+      text-decoration: none !important;
+      margin-bottom: 0 !important;
+    }
+
+    .open-modal {
+      display: none;
+      position: fixed;
+      height: 100svh;
+      width: 50vw;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background-color: #101010;
+      z-index: 9999;
+    }
+
+    .close-modal {
+      height: 3vw;
+      width: 3vw;
+      position: absolute;
+      left: auto;
+      right: var(--small-padding-horizontal);
+      top: var(--small-padding-vertical);
+      cursor: pointer;
+    }
+
+    .close-modal svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .heading-modal {
+      margin-left: var(--small-padding-horizontal);
+      margin-top: var(--small-padding-vertical);
+      height: fit-content;
+    }
+
+    .heading-modal h2 {
+      font-size: 3vw;
+    }
+
+    .modal-info {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      bottom: var(--small-padding-vertical);
+      left: var(--small-padding-horizontal);
+      right: var(--small-padding-horizontal);
+      gap: var(--medium-padding-vertical);
+      width: 34vw;
+    }
+
+    .modal-info p {
+      font-size: var(--link);
+    }
+
+    textarea{
+      width: 34vw;
+      height: 16vw;
+      white-space: normal;
+    text-align: justify;
+    -moz-text-align-last: center; /* Firefox 12+ */
+    text-align-last: center;
+    margin-bottom: var(--medium-padding-vertical);
+    border:3px solid var(--white-color);
+    background-color: transparent;
+    color: var(--white-color);
+  }
+
+  input.cta-link{
+    background-color: transparent;
+    border: none;
+
+    text-decoration: underline;
+      text-underline-offset: 0.8vh;
+      text-decoration-color: var(--main-color);
+  }
+
+
+
+    @media screen and (max-width: 991px) {
+      :root {
+        /*   FONT SIZE   */
+        --heading: 6.6vw;
+        --subheading: 88px;
+        --paragraph: 3.4vw;
+        --banner-p: 3.4vw;
+        --link: 3vw;
+        --small-p: 2.2vw;
+
+        /*   SPACING   */
+        /* --small-padding-horizontal: 3.5rem; */
+        --small-padding-horizontal: 3.2vw;
+        --small-padding-vertical: 2.6vh;
+        --medium-padding-vertical: 6vh;
+        --large-padding-vertical: 9.2vh;
+      }
+
+      .mobile {
+        display: block;
+      }
+
+      header {
+        display: none;
+      }
+
+      header .footer-heading {
+        z-index: 1;
+      }
+
+      .mobile-nav header {
+        display: flex;
+        align-items: center;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .flex {
+        display: flex !important;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      #mobileNav {
+        height: 100vh;
+        background: var(--black-color);
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+
+
+      .menu {
+        z-index: 2;
+        fill: white;
+      }
+
+      .close-menu {
+        display: none;
+        filter: invert(0);
+      }
+
+      .show-menu {
+        display: flex;
+        filter: invert(1);
+        z-index: 2;
+      }
+
+
+
+
+      #mobileNav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--small-padding-vertical);
+        align-items: center;
+        width: 100vw;
+      }
+
+      .full-page {
+        height: 100svh;
+      }
+
+      .footer-heading .text-indent {
+        padding-left: 3.2vw;
+      }
+
+      a.footer-heading {
+        color: var(--main-color);
+      }
+
+      .text-indent {
+        padding-left: 7vw;
+      }
+
+
+    }
+  </style>
+  <script src="script.js"></script>
+  <script src="../lib/p5.min.js"></script>
+  <script src="../lib/p5.sound.js"></script>
+  <script src="sketch.js"></script>
+  <script src="sample.js" type="text/javascript"></script>
+  <script src="data.json"></script>
+</head>
+
+<body>
+  <h1>Momenti del fuori</h1>
+  <header>
+    <nav>
+      <ul>
+
+        <li>
+          <a class="main-color" href="index.html">Home</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="mobile-nav">
+    <header>
+      <a class="footer-heading" href="index.html">Il buono e <span class="text-indent">il cattivo tempo </span>
+      </a>
+      <div class="menu">
+        <svg viewBox="0 0 100 80" width="40" height="40">
+          <rect width="100" height="20" rx="10"></rect>
+          <rect y="30" width="100" height="20" rx="10"></rect>
+          <rect y="60" width="100" height="20" rx="10"></rect>
+        </svg>
+      </div>
+
+      <div class="close-menu">
+        <svg viewBox="0 0 100 80" width="40" height="40">
+          <rect width="100" height="20" rx="10"></rect>
+          <rect y="30" width="100" height="20" rx="10"></rect>
+          <rect y="60" width="100" height="20" rx="10"></rect>
+        </svg>
+      </div>
+
+      <nav id="mobileNav">
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="documentario.html">Documentario</a>
+          </li>
+          <li>
+            <a href="momenti-del-dentro.html">Mondo del dentro</a>
+          </li>
+          <li>
+            <a href="momenti-del-fuori.html">Mondo del fuori</a>
+          </li>
+          <li>
+            <a href="noi.html">Noi</a>
+          </li>
+          <li>
+            <a href="voi.html">Voi</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+  </div>
+  <main>
+
+    <section class="ellipse-section" id="ellipseContainer">
+      <div class="absolute-hero">
+        <div class="ellipse-container" id="ellipseContainer1">
+          <svg width="770" height="723" viewBox="0 0 770 723" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M151.28 254H141.652L140.449 252.796V195.028H139.245L115.175 252.796L113.972 254H103.14L101.937 252.796L77.8665 195.028H76.663V252.796L75.4595 254H65.8315L64.628 252.796V170.958L65.8315 169.755H79.07L80.2735 170.958L107.954 238.354H109.158L136.838 170.958L138.042 169.755H151.28L152.484 170.958V252.796L151.28 254ZM166.883 211.877C166.883 205.539 167.766 199.722 169.531 194.427C171.296 189.131 173.863 184.558 177.233 180.707C180.603 176.856 184.735 173.887 189.629 171.801C194.604 169.635 200.26 168.551 206.599 168.551C212.937 168.551 218.553 169.635 223.448 171.801C228.422 173.887 232.594 176.856 235.964 180.707C239.334 184.558 241.901 189.131 243.666 194.427C245.432 199.722 246.314 205.539 246.314 211.877C246.314 218.216 245.432 224.033 243.666 229.328C241.901 234.624 239.334 239.197 235.964 243.048C232.594 246.899 228.422 249.908 223.448 252.074C218.553 254.16 212.937 255.204 206.599 255.204C200.26 255.204 194.604 254.16 189.629 252.074C184.735 249.908 180.603 246.899 177.233 243.048C173.863 239.197 171.296 234.624 169.531 229.328C167.766 224.033 166.883 218.216 166.883 211.877ZM178.918 211.877C178.918 216.691 179.52 221.104 180.723 225.116C181.927 229.047 183.692 232.457 186.019 235.346C188.346 238.234 191.234 240.481 194.684 242.085C198.134 243.61 202.106 244.372 206.599 244.372C211.092 244.372 215.063 243.61 218.513 242.085C221.963 240.481 224.852 238.234 227.179 235.346C229.505 232.457 231.27 229.047 232.474 225.116C233.677 221.104 234.279 216.691 234.279 211.877C234.279 207.063 233.677 202.691 232.474 198.759C231.27 194.748 229.505 191.298 227.179 188.409C224.852 185.521 221.963 183.314 218.513 181.79C215.063 180.185 211.092 179.383 206.599 179.383C202.106 179.383 198.134 180.185 194.684 181.79C191.234 183.314 188.346 185.521 186.019 188.409C183.692 191.298 181.927 194.748 180.723 198.759C179.52 202.691 178.918 207.063 178.918 211.877ZM347.436 254H337.808L336.605 252.796V195.028H335.401L311.331 252.796L310.128 254H299.296L298.093 252.796L274.023 195.028H272.819V252.796L271.616 254H261.988L260.784 252.796V170.958L261.988 169.755H275.226L276.43 170.958L304.11 238.354H305.314L332.994 170.958L334.198 169.755H347.436L348.64 170.958V252.796L347.436 254ZM423.215 254H369.057L367.854 252.796V170.958L369.057 169.755H423.215L424.418 170.958V179.383L423.215 180.586H381.092L379.889 181.79V204.656L381.092 205.86H420.808L422.011 207.063V215.488L420.808 216.692H381.092L379.889 217.895V241.965L381.092 243.168H423.215L424.418 244.372V252.796L423.215 254ZM508.705 254H497.874L495.467 252.796L454.548 190.214H453.344V252.796L452.141 254H442.513L441.309 252.796V170.958L442.513 169.755H453.344L455.751 170.958L496.67 233.541H497.874V170.958L499.077 169.755H508.705L509.909 170.958V252.796L508.705 254ZM588.193 180.586H562.919L561.716 181.79V252.796L560.512 254H550.884L549.681 252.796V181.79L548.477 180.586H523.204L522 179.383V170.958L523.204 169.755H588.193L589.396 170.958V179.383L588.193 180.586ZM612.216 254H602.588L601.384 252.796V170.958L602.588 169.755H612.216L613.419 170.958V252.796L612.216 254Z"
+              fill="#FFFBF1"></path>
+            <path
+              d="M243.821 308.877C243.821 315.216 243.139 320.993 241.775 326.208C240.491 331.343 238.284 335.756 235.155 339.446C232.106 343.137 228.055 345.985 223 347.991C217.945 349.997 211.647 351 204.105 351H178.832L177.628 349.796V267.958L178.832 266.755H204.105C211.647 266.755 217.945 267.758 223 269.764C228.055 271.77 232.106 274.618 235.155 278.309C238.284 281.999 240.491 286.452 241.775 291.667C243.139 296.802 243.821 302.539 243.821 308.877ZM231.786 308.877C231.786 303.743 231.344 299.249 230.462 295.398C229.579 291.467 228.055 288.177 225.888 285.53C223.722 282.882 220.753 280.916 216.982 279.632C213.292 278.268 208.598 277.586 202.902 277.586H190.867L189.663 278.79V338.965L190.867 340.168H202.902C208.598 340.168 213.292 339.527 216.982 338.243C220.753 336.879 223.722 334.873 225.888 332.225C228.055 329.578 229.579 326.328 230.462 322.477C231.344 318.546 231.786 314.012 231.786 308.877ZM313.614 351H259.457L258.253 349.796V267.958L259.457 266.755H313.614L314.818 267.958V276.383L313.614 277.586H271.492L270.288 278.79V301.656L271.492 302.86H311.207L312.411 304.063V312.488L311.207 313.692H271.492L270.288 314.895V338.965L271.492 340.168H313.614L314.818 341.372V349.796L313.614 351ZM384.663 351H332.912L331.709 349.796V267.958L332.912 266.755H342.54L343.744 267.958V338.965L344.947 340.168H384.663L385.866 341.372V349.796L384.663 351ZM478.569 277.586H438.853L437.65 278.79V302.86L438.853 304.063H476.162L477.365 305.267V313.692L476.162 314.895H438.853L437.65 316.098V349.796L436.446 351H426.818L425.615 349.796V267.958L426.818 266.755H478.569L479.772 267.958V276.383L478.569 277.586ZM559.241 320.913C559.241 325.726 558.479 330.059 556.954 333.91C555.51 337.761 553.384 341.051 550.576 343.779C547.848 346.507 544.478 348.593 540.466 350.037C536.455 351.481 531.881 352.204 526.746 352.204C521.612 352.204 517.038 351.481 513.027 350.037C509.015 348.593 505.605 346.507 502.797 343.779C500.069 341.051 497.943 337.761 496.418 333.91C494.974 330.059 494.252 325.726 494.252 320.913V267.958L495.455 266.755H505.083L506.287 267.958V320.913C506.287 326.93 507.892 331.864 511.101 335.716C514.31 339.487 519.525 341.372 526.746 341.372C533.967 341.372 539.183 339.487 542.392 335.716C545.601 331.864 547.206 326.93 547.206 320.913V267.958L548.409 266.755H558.037L559.241 267.958V320.913ZM573.706 308.877C573.706 302.539 574.589 296.722 576.354 291.427C578.119 286.131 580.687 281.558 584.057 277.707C587.426 273.856 591.558 270.887 596.453 268.801C601.427 266.635 607.083 265.551 613.422 265.551C619.76 265.551 625.377 266.635 630.271 268.801C635.245 270.887 639.418 273.856 642.787 277.707C646.157 281.558 648.725 286.131 650.49 291.427C652.255 296.722 653.137 302.539 653.137 308.877C653.137 315.216 652.255 321.033 650.49 326.328C648.725 331.624 646.157 336.197 642.787 340.048C639.418 343.899 635.245 346.908 630.271 349.074C625.377 351.16 619.76 352.204 613.422 352.204C607.083 352.204 601.427 351.16 596.453 349.074C591.558 346.908 587.426 343.899 584.057 340.048C580.687 336.197 578.119 331.624 576.354 326.328C574.589 321.033 573.706 315.216 573.706 308.877ZM585.741 308.877C585.741 313.691 586.343 318.104 587.547 322.116C588.75 326.047 590.515 329.457 592.842 332.346C595.169 335.234 598.057 337.481 601.507 339.085C604.957 340.61 608.929 341.372 613.422 341.372C617.915 341.372 621.887 340.61 625.337 339.085C628.787 337.481 631.675 335.234 634.002 332.346C636.329 329.457 638.094 326.047 639.297 322.116C640.501 318.104 641.102 313.691 641.102 308.877C641.102 304.063 640.501 299.691 639.297 295.759C638.094 291.748 636.329 288.298 634.002 285.409C631.675 282.521 628.787 280.314 625.337 278.79C621.887 277.185 617.915 276.383 613.422 276.383C608.929 276.383 604.957 277.185 601.507 278.79C598.057 280.314 595.169 282.521 592.842 285.409C590.515 288.298 588.75 291.748 587.547 295.759C586.343 299.691 585.741 304.063 585.741 308.877ZM721.765 290.825C721.765 286.011 720.522 282.601 718.034 280.595C715.547 278.589 711.576 277.586 706.12 277.586H680.846L679.643 278.79V302.86L680.846 304.063H706.12C711.576 304.063 715.547 303.061 718.034 301.055C720.522 299.049 721.765 295.639 721.765 290.825ZM733.8 290.825C733.8 297.484 732.155 302.659 728.866 306.35C725.576 310.041 721.204 312.488 715.748 313.692V314.895L732.597 341.372V349.796L731.393 351H726.579L724.172 349.796L702.509 316.098L700.102 314.895H680.846L679.643 316.098V349.796L678.439 351H668.811L667.608 349.796V267.958L668.811 266.755H706.12C714.544 266.755 721.244 268.681 726.218 272.532C731.273 276.303 733.8 282.4 733.8 290.825ZM759.064 351H749.436L748.233 349.796V267.958L749.436 266.755H759.064L760.268 267.958V349.796L759.064 351Z"
+              fill="#FFFBF1"></path>
+            <path
+              d="M681.787 219.822C704.453 279.672 683.568 349.833 630.891 415.013C578.241 480.161 494.005 540.075 390.636 579.222C287.267 618.37 184.475 629.285 101.877 615.358C19.2385 601.424 -42.8825 562.699 -65.5489 502.849C-88.2153 442.998 -67.3306 372.838 -14.6534 307.657C37.9973 242.51 122.233 182.595 225.602 143.448C328.97 104.301 431.763 93.3849 514.36 107.312C596.999 121.246 659.12 159.971 681.787 219.822Z"
+              stroke="#FFFBF1" stroke-width="3"></path>
+          </svg>
+        </div>
+
+
+    </section>
+
+
+
+
+    <section class="paragraph-container" id="text">
+      <p style="font-size: var(--link); margin-top: 0;
+      margin-bottom: var(--small-padding-vertical);">
+        Leggi le storie di chi frequenta il quartiere e racconta la tua.
+      </p>
+      <a class="cta-link" id="openModal">Aggiungi la tua voce</a>
+
+      <a class="cta-link no-decoration">Info</a>
+    </section>
+    </div>
+
+    <div class="open-modal">
+
+      <div class="close-modal">
+        <svg viewPort="0 0 3vw 3vw" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <line x1="1" y1="3vw" x2="3vw" y2="1" stroke="white" stroke-width="4" />
+          <line x1="1" y1="1" x2="3vw" y2="3vw" stroke="white" stroke-width="4" />
+        </svg>
+      </div>
+
+      <div class="heading-modal">
+        <h2>Aggiungi la tua voce</h2>
+      </div>
+
+      <div class="modal-info">
+        <p>
+          Tocca sulla mappa, scrivi la tua storia, e pubblicala su San Vittore.
+        </p>
+
+        <form action="" id="formId">
+          <textarea id="textId" name="" rows="4" cols="50">
+            Scrivi qua
+          </textarea>
+          <input class="cta-link" type="submit" value="Pubblica">
+        </form>
+      </div>
+
+
+    </div>
+
+
+  </main>
+</body>
+
+</html>
